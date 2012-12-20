@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+	<script type="text/javascript">
+$(document).ready(function() 
+    { 
+        $("#result").tablesorter(); 
+    } 
+); 
+</script>
+<form action="{{ url_for('results') }}" method=post>
+   <input name="name" type="text"> <br>
+   <input name="lastname" type="text"> <br>
+   <input type="submit" value="buscar">
+  </form>
+<ul>
+  <h2>Resultados</h2>
+  <table id="result" class="tablesorter">
+	<thead>
+	<tr>
+		<th>cedula
+		<th>nombre
+		<th>apellido
+		<th>sexo
+		<th>fecha_nacimiento
+		<th>lugar_nacimiento
+		<th>estadocivil
+		<th>telefono
+		<th>direccion
+		<th>casa
+		<th>edificio
+		<th>piso
+	<tbody>
+	{%- for persona in personas %}
+	<tr>
+		<td>{{ persona.cedula }}
+		<td>{{ persona.nombre }}
+		<td>{{ persona.apellido }}
+		<td>{{ persona.sexo }}
+		<td>{{ persona.fecha_nacimiento }}
+		<td>{{ persona.lugar_nacimiento }}
+		<td>{{ persona.estadocivil }}
+		<td>{{ persona.telefono1 }}
+		<td>{{ persona.direccion }}
+		<td>{{ persona.Casa }}
+		<td>{{ persona.Edificio }}
+                <td>{{ persona.Piso }}
+	{%- endfor %}
+  </table>
+{% endblock %}
